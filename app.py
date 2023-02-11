@@ -11,7 +11,7 @@ model = pickle.load(open('logisticmodel.pkl','rb'))
 #     return render_template("index.html")
   
 # @app.route('/predict',methods=['GET'])
-def predict(chol):
+def predict(chol,age):
     
 
     
@@ -20,7 +20,7 @@ def predict(chol):
     # '''
     # exp = float(request.args.get('exp'))
     
-    prediction = int(model.predict([[float(chol)]]))
+    prediction = int(model.predict([[float(chol),float(age)]]))
     
         
     # return render_template('index.html', prediction_text='Regression Model  has predicted salary for given experinace is Rs.  : {}'.format(prediction))
@@ -42,11 +42,12 @@ def main():
     st.markdown(html_temp,unsafe_allow_html=True)
     # exp = st.number_input('Experience', 2, 40)
     chol = st.number_input('cholestrol',step =1., format="%.2f")
+    chol = st.number_input('age',step =1., format="%.2f")
     
 
     result=""
     if st.button("Predict"):
-        result=predict(float(chol))
+        result=predict(float(chol),float(age))
     st.success(result)
 
     if st.button("About me"):
