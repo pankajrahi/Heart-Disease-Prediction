@@ -42,7 +42,7 @@ def main():
     st.markdown(html_temp,unsafe_allow_html=True)
     # exp = st.number_input('Experience', 2, 40)
     chol = st.number_input('cholestrol',step =1., format="%.2f")
-    chol = st.number_input('age',step =1., format="%.2f")
+    age = st.number_input('age',step =1., format="%.2f")
     
 
     result=""
